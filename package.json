@@ -4,7 +4,10 @@
   "description": "automatizacion de un sistema de tienda",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "cypress run",
+    "cy.open": "cypress open",
+    "cy:run:chrome":"cypress run -b chrome",
+    "cy:run:firefox":"cypress run -b firefox"
   },
   "keywords": [
     "qa",
@@ -14,5 +17,9 @@
   "license": "ISC",
   "dependencies": {
     "cypress": "^13.12.0"
+  },
+  "repository":{
+    "type": "git",
+    "url": "https://github.com/opdrums/marketCypress"
   }
 }
