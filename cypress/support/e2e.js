@@ -19,5 +19,7 @@ Cypress.on('uncaught:exception', (err, runable) =>{
     return false
 })
 
+require('cypress-xpath');
+
 // Alternatively you can use CommonJS syntax:
 // require('./commands')

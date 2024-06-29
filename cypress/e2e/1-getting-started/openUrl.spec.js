@@ -1,11 +1,11 @@
-describe('automation test', ()=>{
+describe('how automation open url', ()=>{
 
     beforeEach(()=>{
         cy.visit('/')
     })
 
-    it('validate title', ()=>{
-        cy.wait(2000)
-        cy.title().should('include', 'Desarrollo')
+    it('click notification', () =>{
+        cy.xpath('//button[@id="rcc-confirm-button"]').click()
+        cy.xpath('//a[@class="store-locator button"]').click()
     })
 })

@@ -5,7 +5,7 @@ module.exports = defineConfig({
     setupNodeEvents(on, config) {},
     baseUrl: 'https://www.starbucks.com.co/',
     specPattern: 'cypress/e2e/**/*.spec.js',
-    video:true,
+    video:false,
     videoCompression:32,
   },
 })
