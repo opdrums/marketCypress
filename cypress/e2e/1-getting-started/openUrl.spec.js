@@ -1,11 +1,16 @@
 describe('how automation open url', ()=>{
 
-    beforeEach(()=>{
-        cy.visit('/')
-    })
+    let dataBase;
 
-    it('click notification', () =>{
-        cy.xpath('//button[@id="rcc-confirm-button"]').click()
-        cy.xpath('//a[@class="store-locator button"]').click()
+    beforeEach(function() {
+        cy.fixture('login').then(credentials => {
+            dataBase = credentials;
+            cy.openUrl(dataBase.url)
+        });
+    });
+
+    
+    it('validate title url', function(){
+        cy.contains(dataBase.title).should('have.text', dataBase.title)
     })
 })

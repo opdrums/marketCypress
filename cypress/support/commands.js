@@ -1,25 +1,30 @@
-// ***********************************************
-// This example commands.js shows you how to
-// create various custom commands and overwrite
-// existing commands.
-//
-// For more comprehensive examples of custom
-// commands please read more here:
-// https://on.cypress.io/custom-commands
-// ***********************************************
-//
-//
-// -- This is a parent command --
-// Cypress.Commands.add('login', (email, password) => { ... })
-//
-//
-// -- This is a child command --
-// Cypress.Commands.add('drag', { prevSubject: 'element'}, (subject, options) => { ... })
-//
-//
-// -- This is a dual command --
-// Cypress.Commands.add('dismiss', { prevSubject: 'optional'}, (subject, options) => { ... })
-//
-//
-// -- This will overwrite an existing command --
-// Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+Cypress.Commands.add('openUrl', (url) =>{
+    cy.visit(url);
+})
+
+Cypress.Commands.add('login', (userName, password) => {
+    
+    cy.xpath("//input[@placeholder='Username']")
+    .clear().type(userName);
+    cy.xpath("//input[@placeholder='Password']")
+    .clear().type(password);
+    cy.xpath('//button[@type="submit"]')
+    .should('be.visible').click();
+});
+
+Cypress.Commands.add('logout',(alert)=>{
+
+    cy.get('.oxd-userdropdown-name').click()
+    cy.contains('Logout').should('exist').click()
+    cy.contains(alert).should('have.text', alert)
+})
+
+Cypress.Commands.add('forgoutPassword', (userName) => {
+    
+    cy.contains('Forgot your password? ').click()
+    cy.xpath("//input[@placeholder='Username']")
+    .clear().type(userName)
+    cy.xpath("//button[@type='submit']")
+    .should('be.visible').click()
+    cy.contains('Reset Password link sent successfully').should('have.text','Reset Password link sent successfully')
+})
