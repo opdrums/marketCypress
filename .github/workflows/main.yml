@@ -12,6 +12,14 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4.1.7
 
+      - name: Install Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      - name: Install dependencies
+        run: npm install
+
       - name: Cypress run with screenshots, video, and browser
         env:
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY1 }}
