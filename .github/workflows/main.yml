@@ -15,7 +15,7 @@ jobs:
       - name: Install Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: 16
+          node-version: '14'
 
       - name: Install dependencies
         run: npm install
@@ -26,13 +26,13 @@ jobs:
         run: npm run cypress:run  # Ajusta este comando según cómo ejecutes Cypress
 
       - name: Upload Test Results
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: cypress-results
           path: cypress/screenshots  # Ajusta la ruta según donde se guarden los resultados
 
       - name: Upload Videos
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: cypress-videos
           path: cypress/videos  # Ajusta la ruta según donde se guarden los videos de Cypress
