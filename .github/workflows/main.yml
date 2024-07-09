@@ -1,21 +1,35 @@
 name: Cypress Tests
 
-on: push
+on:
+  push:
+    branches:
+      - master
 
 jobs:
   cypress-run:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout
+      - name: Checkout code
         uses: actions/checkout@v4
-      # Install npm dependencies, cache them correctly
-      # and run all Cypress tests
-      - name: Cypress run
-        uses: cypress-io/github-action@v6
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
         with:
-          build: npm run build
-          start: npm start
-          browser: chrome
+          node-version: '14'  # ajusta la versión de Node.js según tus necesidades
 
+      - name: Install dependencies
+        run: npm install  # o npm ci si prefieres instalar exactamente desde package-lock.json
 
-        
+      - name: Build
+        run: npm run build  # corre el comando de construcción si es necesario
+
+      - name: Run Cypress tests
+        run: npm run test  # o el comando específico para ejecutar las pruebas de Cypress
+
+      - name: Upload Test Results
+        if: always()  # carga los resultados de las pruebas incluso si fallan
+        uses: actions/upload-artifact@v4
+        with:
+          name: cypress-test-results
+          path: cypress/videos  # ajusta la ruta donde Cypress guarda los videos de las pruebas
