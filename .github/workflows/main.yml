@@ -9,16 +9,8 @@ jobs:
   build-and-test:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout código
-        uses: actions/checkout@v2
+      - name: Checkout
+        uses:  actions/checkout@v4.1.7
 
-      - name: Instalar dependencias
-        run: npm install
-
-      - name: Construir la aplicación
-        run: npm run build
-
-      - name: Ejecutar pruebas de Cypress
-        uses: cypress-io/github-action@v6.5.0
-        with:
-          start: npm start
+      - name: Cypress run
+        run: cypress-io/github-action@v6.5.0
