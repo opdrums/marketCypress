@@ -7,6 +7,7 @@ module.exports = defineConfig({
     specPattern: 'cypress/e2e/**/*.spec.js',
     video:true,
     videoCompression:32,
+    reporter: 'mochawesome',
   },
   projectId: "vn4you"
 })
