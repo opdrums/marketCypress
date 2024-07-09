@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4.1.7
+        uses: actions/checkout@v2
 
       - name: Install Node.js
         uses: actions/setup-node@v2
@@ -26,13 +26,13 @@ jobs:
         run: npm run cypress:run  # Ajusta este comando según cómo ejecutes Cypress
 
       - name: Upload Test Results
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v2
         with:
           name: cypress-results
           path: cypress/screenshots  # Ajusta la ruta según donde se guarden los resultados
 
       - name: Upload Videos
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v2
         with:
           name: cypress-videos
           path: cypress/videos  # Ajusta la ruta según donde se guarden los videos de Cypress
