@@ -14,12 +14,9 @@ jobs:
         
       - name: Cypress run with screenshots, video, and browser
         env:
-          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY1 }}
-        uses: cypress-io/github-action@v6.5.0
-        with:
-          browser: chrome  # Puedes cambiar a 'firefox' si prefieres
-          record: true  # Opcional: si deseas grabar los resultados en Cypress Dashboard
-
+          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+        run: npm run cypress:run
+       
       - name: Upload Test Results
         uses: actions/upload-artifact@v2
         with:
