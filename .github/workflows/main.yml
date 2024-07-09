@@ -11,13 +11,6 @@ jobs:
     steps:
       - name: Checkout
         uses:  actions/checkout@v4.1.7
+        
       - name: Cypress run
         uses: cypress-io/github-action@v6.5.0
-
-      - name: Upload Videos
-        uses: actions/upload-artifact@v2
-
-      - name: Cypress run with screenshots, video, and browser
-        env:
-          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY1 }}
-        run: npm run cypress:run
