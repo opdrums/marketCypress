@@ -8,7 +8,7 @@
     "cy.open": "cypress open",
     "cy:run:chrome": "cypress run -b chrome",
     "cy:run:firefox": "cypress run -b firefox",
-    "start": "node src/index.js"
+    "start": "index.js"
   },
   "keywords": [
     "qa",
