@@ -1,35 +1,33 @@
 name: Cypress Tests
 
-on:
-  push:
-    branches:
-      - master
+on: push
 
 jobs:
+  install:
+  # ... omitted install job from above
+
   cypress-run:
-    runs-on: ubuntu-latest
-
+    runs-on: ubuntu-22.04
+    needs: install
+    strategy:
+      # don't fail the entire matrix on failure
+      fail-fast: false
+      matrix:
+        # run copies of the current job in parallel
+        containers: [1, 2, 3, 4, 5]
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+      - name: Checkout
+        uses: actions/checkout@v4
 
-      #- name: Setup Node.js
-       # uses: actions/setup-node@v2
-        #with:
-         # node-version: '16' # ajusta la versión de Node.js según tus necesidades
-
-      #- name: Install dependencies
-       # run: npm install  # o npm ci si prefieres instalar exactamente desde package-lock.json
-
-      - name: Build
-        run: npm run build  # corre el comando de construcción si es necesario
-
-      - name: Run Cypress tests
-        run: npm run test  # o el comando específico para ejecutar las pruebas de Cypress
-
-      - name: Upload Test Results
-        if: always()  # carga los resultados de las pruebas incluso si fallan
-        uses: actions/upload-artifact@v2
+      - name: Download the build folder
+        uses: actions/download-artifact@v4
         with:
-          name: cypress-test-results
-          path: cypress/videos  # ajusta la ruta donde Cypress guarda los videos de las pruebas
+          name: build
+
+      - name: Cypress run
+        uses: cypress-io/github-action@v6
+        with:
+          record: true
+          parallel: true
+          group: 'UI-Chrome'
+          start: npm start
