@@ -1,3 +1,7 @@
+import webBase from "../../pages/webBase";
+
+const web = new webBase
+
 describe('how automation open url', ()=>{
 
     let dataBase;
@@ -5,12 +9,12 @@ describe('how automation open url', ()=>{
     beforeEach(function() {
         cy.fixture('login').then(credentials => {
             dataBase = credentials;
-            cy.openUrl(dataBase.url)
+            web.openUrl(dataBase.url)
         });
     });
 
     
     it('validate title url', function(){
-        cy.contains(dataBase.title).should('have.text', dataBase.title)
+        web.containsAlertText(dataBase.title)
     })
 })

@@ -1,39 +1,11 @@
-Cypress.Commands.add('openUrl', (url) =>{
-    cy.visit(url);
-})
+import webBase from "../pages/webBase";
+
+const getElement = new webBase
 
 Cypress.Commands.add('login', (userName, password) => {
     
-    cy.xpath("//input[@placeholder='Username']")
-    .clear().type(userName);
-    cy.xpath("//input[@placeholder='Password']")
-    .clear().type(password);
-    cy.xpath('//button[@type="submit"]')
-    .should('be.visible').click();
+    getElement.fielText("//input[@placeholder='Username']", userName)
+    getElement.fielText("//input[@placeholder='Password']", password)
+    getElement.elementVisibleClick('//button[@type="submit"]')
+    getElement.screenshot()
 });
-
-Cypress.Commands.add('logout',(alert)=>{
-
-    cy.get('.oxd-userdropdown-name').click()
-    cy.contains('Logout').should('exist').click()
-    cy.contains(alert).should('have.text', alert)
-})
-
-Cypress.Commands.add('forgoutPassword', (userName) => {
-    
-    cy.contains('Forgot your password? ').click()
-    cy.wait(1000)
-    cy.xpath("//input[@placeholder='Username']")
-    .clear().type(userName)
-    cy.xpath("//button[@type='submit']")
-    .should('be.visible').click()
-    cy.contains('Reset Password link sent successfully').should('have.text','Reset Password link sent successfully')
-})
-
-/*cypress.Commands.add('visitInSameTab', (url) =>{
-    cy.on('window:before:load', (win)=>{
-        cy.stub(win, 'open').as('windowOpen').callsFake(()=>{
-            cy.visit(url)
-        })
-    }) 
-})*/

@@ -8,3 +8,4 @@ pasos:
 6: configurar los test con los de ejemplo
 7: npx cypress run
 8: si quieres crear el comando xpath https://www.npmjs.com/package/cypress-xpath
+9:npm install --save-dev mochawesome
