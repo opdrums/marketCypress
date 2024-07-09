@@ -13,14 +13,13 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      #name: Setup Node.js
-        #uses: actions/setup-node@v2
-        #with:
-        #  node-version: '16'
-                        # ajusta la versión de Node.js según tus necesidades
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16' # ajusta la versión de Node.js según tus necesidades
 
-      - name: Install dependencies
-        run: npm install  # o npm ci si prefieres instalar exactamente desde package-lock.json
+      #- name: Install dependencies
+       # run: npm install  # o npm ci si prefieres instalar exactamente desde package-lock.json
 
       - name: Build
         run: npm run build  # corre el comando de construcción si es necesario
