@@ -15,3 +15,21 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v6.5.0
 
+      - name: Cypress run with screenshots, video, and browser
+        uses: cypress-io/github-action@v6.5.0
+        with:
+          browser: chrome  # Puedes cambiar a 'firefox' si prefieres
+          record: true  # Opcional: si deseas grabar los resultados en Cypress Dashboard
+
+      - name: Upload Test Results
+        uses: actions/upload-artifact@v2
+        with:
+          name: cypress-results
+          path: cypress/screenshots  # Ajusta la ruta según donde se guarden los resultados
+
+      - name: Upload Videos
+        uses: actions/upload-artifact@v2
+        with:
+          name: cypress-videos
+          path: cypress/videos
+    
