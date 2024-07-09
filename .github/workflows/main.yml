@@ -11,12 +11,12 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v2
 
       - name: Setup Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '16'  # Actualiza a una versión compatible con Cypress 13.12.0
+          node-version: '14'
                         # ajusta la versión de Node.js según tus necesidades
 
       - name: Install dependencies
@@ -30,7 +30,7 @@ jobs:
 
       - name: Upload Test Results
         if: always()  # carga los resultados de las pruebas incluso si fallan
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v2
         with:
           name: cypress-test-results
           path: cypress/videos  # ajusta la ruta donde Cypress guarda los videos de las pruebas
