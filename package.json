@@ -8,7 +8,7 @@
     "cy.open": "cypress open",
     "cy:run:chrome": "cypress run -b chrome",
     "cy:run:firefox": "cypress run -b firefox",
-    "start": "index.js"
+    "cy:run": "npx cypress run --record --key 71a590d5-9a31-45bc-a696-cb78d83ad89f"
   },
   "keywords": [
     "qa",
