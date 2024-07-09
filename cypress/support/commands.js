@@ -22,9 +22,18 @@ Cypress.Commands.add('logout',(alert)=>{
 Cypress.Commands.add('forgoutPassword', (userName) => {
     
     cy.contains('Forgot your password? ').click()
+    cy.wait(1000)
     cy.xpath("//input[@placeholder='Username']")
     .clear().type(userName)
     cy.xpath("//button[@type='submit']")
     .should('be.visible').click()
     cy.contains('Reset Password link sent successfully').should('have.text','Reset Password link sent successfully')
 })
+
+/*cypress.Commands.add('visitInSameTab', (url) =>{
+    cy.on('window:before:load', (win)=>{
+        cy.stub(win, 'open').as('windowOpen').callsFake(()=>{
+            cy.visit(url)
+        })
+    }) 
+})*/

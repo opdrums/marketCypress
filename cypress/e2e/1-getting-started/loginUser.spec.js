@@ -11,6 +11,7 @@ describe('login User', () => {
 
     it('login sucess', () => {
         cy.login(dataBase.userName,dataBase.password)
+        cy.screenshot()
     });
 
 
@@ -19,8 +20,9 @@ describe('login User', () => {
         cy.logout(dataBase.title)
     });
 
-    it('forgot password', function() {
+    it.only('forgot password', function() {
        cy.forgoutPassword(dataBase.userName)
+       cy.screenshot()
     });
 
 })
