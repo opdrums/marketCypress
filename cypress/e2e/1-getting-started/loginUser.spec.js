@@ -24,5 +24,4 @@ describe('login User', () => {
        cy.forgoutPassword(dataBase.userName)
        cy.screenshot()
     });
-
 })
