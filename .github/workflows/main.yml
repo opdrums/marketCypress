@@ -16,7 +16,8 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '16'  # ajusta la versión de Node.js según tus necesidades
+          node-version: '16'  # Actualiza a una versión compatible con Cypress 13.12.0
+                        # ajusta la versión de Node.js según tus necesidades
 
       - name: Install dependencies
         run: npm install  # o npm ci si prefieres instalar exactamente desde package-lock.json
