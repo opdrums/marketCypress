@@ -21,7 +21,6 @@ Pasos para correr el proyecto:
 
 * Requiere correr desde consola usando la key
     ingresar https://cloud.cypress.io/profile --hacer login
-    https://cloud.cypress.io/invitation/be51922e-fec1-4c76-9e0c-165ddc85db2b --proyecto
     npx cypress run --record --key 07d06e25-3b04-4502-9e50-4e3215624ae6 --terminal
 
 * Requiere correr con mochawesome terminal
