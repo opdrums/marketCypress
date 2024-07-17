@@ -9,12 +9,12 @@ describe('how automation open url', ()=>{
     beforeEach(function() {
         cy.fixture('login').then(credentials => {
             dataBase = credentials;
-            web.openUrl(dataBase.url)
+            web.settingTest.openUrl(dataBase.url)
         });
     });
 
     
     it('validate title url', function(){
-        web.containsAlertText(dataBase.title)
+        web.containsBase.containsHaveText(dataBase.title)
     })
 })

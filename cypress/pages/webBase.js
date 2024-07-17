@@ -1,37 +1,16 @@
-class webBase {
+import settingTest from "./settingTest";
+import clickBase from "./clickBase";
+import fieldBase from "./fieldBase";
+import containsBase from "./containsBase";
+import visibleBase from "./visibleBase";
 
-    openUrl(url){
-        cy.visit(url)
-    }
-
-    fielText(elm, text){
-        cy.xpath(elm).clear().type(text)
-
-    }
-
-    screenshot(){
-        cy.screenshot()
-    }
-
-    elementVisibleClick(elm){
-        cy.xpath(elm).should('be.visible').click()
-    }
-
-    getElementClick(elm){
-        cy.get(elm).should('exist').click()
-    }
-
-    containsElmClick(elm){
-        cy.contains(elm).should('exist').click()
-    }
-
-    containsAlertText(text){
-        cy.contains(text).should('have.text', text)
-    }
-
-    waitExplicity(){
-        cy.wait(1000)
-    }
+class webBasePage {
+  constructor() {
+    this.settingTest = new settingTest();
+    this.clickBase = new clickBase();
+    this.fieldBase = new fieldBase();
+    this.containsBase = new containsBase();
+    this.visibleBase = new visibleBase();
+  }
 }
-
-export default webBase
+export default webBasePage;
